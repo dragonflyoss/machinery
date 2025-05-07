@@ -6,7 +6,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/RichardKnop/machinery/v2/config"
+	"github.com/dragonflyoss/machinery/v2/config"
 	"github.com/redis/go-redis/v9"
 )
 

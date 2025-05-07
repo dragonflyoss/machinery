@@ -5,7 +5,7 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	"github.com/RichardKnop/machinery/v1"
+	"github.com/dragonflyoss/machinery/v1"
 )
 
 func TestRedactURL(t *testing.T) {
