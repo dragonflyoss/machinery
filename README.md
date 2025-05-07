@@ -65,10 +65,10 @@ Instead of factory, you will need to inject broker and backend objects to the se
 
 ```go
 import (
-  "github.com/RichardKnop/machinery/v2"
-  backendsiface "github.com/RichardKnop/machinery/v2/backends/iface"
-  brokersiface "github.com/RichardKnop/machinery/v2/brokers/iface"
-  locksiface "github.com/RichardKnop/machinery/v2/locks/iface"
+  "github.com/dragonflyoss/machinery/v2"
+  backendsiface "github.com/dragonflyoss/machinery/v2/backends/iface"
+  brokersiface "github.com/dragonflyoss/machinery/v2/brokers/iface"
+  locksiface "github.com/dragonflyoss/machinery/v2/locks/iface"
 )
 
 var broker brokersiface.Broker
@@ -391,8 +391,8 @@ A Machinery library must be instantiated before use. The way this is done is by 
 
 ```go
 import (
-  "github.com/RichardKnop/machinery/v1/config"
-  "github.com/RichardKnop/machinery/v1"
+  "github.com/dragonflyoss/machinery/v1/config"
+  "github.com/dragonflyoss/machinery/v1"
 )
 
 var cnf = &config.Config{
@@ -619,7 +619,7 @@ Tasks can be called by passing an instance of `Signature` to an `Server` instanc
 
 ```go
 import (
-  "github.com/RichardKnop/machinery/v1/tasks"
+  "github.com/dragonflyoss/machinery/v1/tasks"
 )
 
 signature := &tasks.Signature{
@@ -784,8 +784,8 @@ Running a single asynchronous task is fine but often you will want to design a w
 
 ```go
 import (
-  "github.com/RichardKnop/machinery/v1/tasks"
-  "github.com/RichardKnop/machinery/v1"
+  "github.com/dragonflyoss/machinery/v1/tasks"
+  "github.com/dragonflyoss/machinery/v1"
 )
 
 signature1 := tasks.Signature{
@@ -845,8 +845,8 @@ for _, asyncResult := range asyncResults {
 
 ```go
 import (
-  "github.com/RichardKnop/machinery/v1/tasks"
-  "github.com/RichardKnop/machinery/v1"
+  "github.com/dragonflyoss/machinery/v1/tasks"
+  "github.com/dragonflyoss/machinery/v1"
 )
 
 signature1 := tasks.Signature{
@@ -921,8 +921,8 @@ for _, result := range results {
 
 ```go
 import (
-  "github.com/RichardKnop/machinery/v1/tasks"
-  "github.com/RichardKnop/machinery/v1"
+  "github.com/dragonflyoss/machinery/v1/tasks"
+  "github.com/dragonflyoss/machinery/v1"
 )
 
 signature1 := tasks.Signature{
@@ -1007,7 +1007,7 @@ Machinery now supports scheduling periodic tasks and workflows. See examples bel
 
 ```go
 import (
-  "github.com/RichardKnop/machinery/v1/tasks"
+  "github.com/dragonflyoss/machinery/v1/tasks"
 )
 
 signature := &tasks.Signature{
@@ -1033,8 +1033,8 @@ if err != nil {
 
 ```go
 import (
-  "github.com/RichardKnop/machinery/v1/tasks"
-  "github.com/RichardKnop/machinery/v1"
+  "github.com/dragonflyoss/machinery/v1/tasks"
+  "github.com/dragonflyoss/machinery/v1"
 )
 
 signature1 := tasks.Signature{
@@ -1076,8 +1076,8 @@ if err != nil {
 
 ```go
 import (
-  "github.com/RichardKnop/machinery/v1/tasks"
-  "github.com/RichardKnop/machinery/v1"
+  "github.com/dragonflyoss/machinery/v1/tasks"
+  "github.com/dragonflyoss/machinery/v1"
 )
 
 signature1 := tasks.Signature{
@@ -1129,8 +1129,8 @@ if err != nil {
 
 ```go
 import (
-  "github.com/RichardKnop/machinery/v1/tasks"
-  "github.com/RichardKnop/machinery/v1"
+  "github.com/dragonflyoss/machinery/v1/tasks"
+  "github.com/dragonflyoss/machinery/v1"
 )
 
 signature1 := tasks.Signature{
