@@ -121,7 +121,7 @@ func (b *Broker) StartConsuming(consumerTag string, concurrency int, taskProcess
 				}
 
 				if taskProcessor.PreConsumeHandler() {
-					task, _ := b.nextTask(getQueue(b.GetConfig(), taskProcessor))
+					task, _ := b.nextTaskWithPolling(getQueue(b.GetConfig(), taskProcessor))
 					//TODO: should this error be ignored?
 					if len(task) > 0 {
 						deliveries <- task
@@ -386,6 +386,35 @@ func (b *Broker) nextTask(queue string) (result []byte, err error) {
 	result = items[1]
 
 	return result, nil
+}
+
+// nextTask pops next available task from the default queue
+func (b *Broker) nextTaskWithPolling(queue string) (result []byte, err error) {
+	conn := b.open()
+	defer conn.Close()
+
+	pollPeriodMilliseconds := 1000 // default poll period for normal tasks
+	if b.GetConfig().Redis != nil {
+		configuredPollPeriod := b.GetConfig().Redis.NormalTasksPollPeriod
+		if configuredPollPeriod > 0 {
+			pollPeriodMilliseconds = configuredPollPeriod
+		}
+	}
+	pollPeriod := time.Duration(pollPeriodMilliseconds) * time.Millisecond
+
+	for {
+		item, err := redis.Bytes(conn.Do("LPOP", queue))
+		if err == redis.ErrNil {
+			time.Sleep(pollPeriod)
+			continue
+		}
+
+		if err != nil {
+			return []byte{}, err
+		}
+
+		return item, nil
+	}
 }
 
 // nextDelayedTask pops a value from the ZSET key using WATCH/MULTI/EXEC commands.
